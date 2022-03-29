@@ -1,0 +1,31 @@
+<h2>Products</h2>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
+
+<div *ngFor="let product of productsx">
+  <br />
+  <a [title]="product.name + ' details'">
+    {{ product.name }}
+  </a>
+  <br />
+
+  <img [src]="product.url" alt="PhoneImage" style="width:100; height:auto" />
+  <br />
+  <br />
+  <!-- <h4>{{product.description.length}}</h4> -->
+  <span style="font-size:16; font-weight: bold; color:'orange'">{{
+    product.price | currency: 'IDR ':true:'1.2':'en-AU'
+  }}</span>
+  <br />
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+
+  <button type="button" (click)="share(product.color)">Bagikan</button>
+
+  <app-product-alerts [product]="product" (notify)="onNotify($event)">
+  </app-product-alerts>
+  <hr />
+</div>
